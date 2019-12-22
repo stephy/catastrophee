@@ -1,0 +1,25 @@
+{
+  "name": "@catastrophee/styles",
+  "version": "0.0.1",
+  "description": "Styles for catastrophee SDK",
+  "author": "Stephani Moroni Bishop <stephmbishop@yahoo.com>",
+  "homepage": "http://castastrophee.com",
+  "license": "ISC",
+  "main": "dist/index.js",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stephy/catastrophee.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "tsc": "tsc",
+    "build": "lerna run tsc"
+  },
+  "devDependencies": {
+    "lerna": "3.16.0"
+  },
+  "gitHead": "3c186a7375d550a371ff839f041fe3bec56be3b4"
+}

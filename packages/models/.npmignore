@@ -1,0 +1,15 @@
+/node_modules
+/test/unit/output/coverage.html
+*.iml
+*.lock
+/.idea
+/build
+/cdn
+/config
+/public
+/scripts
+/src/components/
+/src/utils/
+/stories
+.awcache/
+.awcache

@@ -1,0 +1,31 @@
+{
+  "name": "@catastrophee/models",
+  "version": "0.0.1",
+  "description": "Mobx models for the web",
+  "author": "Stephani Moroni Bishop <stephmbishop@yahoo.com>",
+  "homepage": "http://castastrophee.com",
+  "license": "ISC",
+  "main": "dist/index.js",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stephy/catastrophee.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "tsc": "tsc",
+    "build": "lerna run tsc"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "js-cookie": "^2.2.0",
+    "mobx": "^5.10.1",
+    "mobx-utils": "^5.4.1",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "lerna": "3.16.0"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "version": "independent",
+  "packages": ["packages/*"],
+  "command": {
+    "publish": {
+      "npmClient": "npm",
+      "verifyAccess": true,
+      "verifyRegistry": true,
+      "registry": "https://registry.npmjs.org"
+    }
+  }
+}
