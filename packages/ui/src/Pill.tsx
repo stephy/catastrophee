@@ -1,7 +1,7 @@
 import * as React from "react";
 import { css } from "glamor";
 import {
-  catastropheeColors,
+  palette,
   Color,
   Paddings,
   Family,
@@ -10,11 +10,11 @@ import {
 } from "@catastrophee/styles";
 import { setAlpha } from "@catastrophee/styles";
 
-const defaultColor = catastropheeColors.blue;
+const defaultColor = palette.blue;
 const defaultStyles = {
   container: {
     alignItems: "center",
-    border: `0.092rem solid ${catastropheeColors.blue}`,
+    border: `0.092rem solid ${palette.blue}`,
     borderRadius: "30px",
     color: Color.light,
     display: "inline-flex",
@@ -43,7 +43,7 @@ export const Pill = ({
   fill,
   truncateOnWidth
 }: PillType) => {
-  const currentColor = catastropheeColors[color] || color;
+  const currentColor = palette[color] || color;
 
   return (
     <span

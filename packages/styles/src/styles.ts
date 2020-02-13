@@ -1,4 +1,4 @@
-const appName = (<any>window).appName || "catastrophee-app";
+const appName = (<any>window).appName || "catastrophee";
 
 // Helper function to transform a hex color into RGB numbers into a comma
 // separated string. Example: #FFFFFF will return '255,255,255'
@@ -49,7 +49,7 @@ const YELLOW = "#ffff00";
 const DUBBING_PURPLE = "#7157E6";
 const ONIX = "#0F0F0F";
 
-export const catastropheeColors = {
+export const palette = {
   lime: "#95C747",
   green: "#60B15D",
   cyan: "#58AABD",
@@ -66,7 +66,7 @@ export const catastropheeColors = {
   grey: "#C8C8C8"
 };
 
-export const catastropheeColorsComplementary = {
+export const paletteComplementary = {
   lime: "#86B340",
   green: "#57A054",
   cyan: "#509AAA",
@@ -83,7 +83,7 @@ export const catastropheeColorsComplementary = {
   grey: "#B4B4B4"
 };
 
-export const onCatastropheeColors = {
+export const onPalette = {
   lime: "#050505",
   green: "#EFEFEF",
   cyan: "#EFEFEF",
@@ -175,8 +175,8 @@ export const DarkThemeColors = {
   primary: RAGOON_GREEN,
   primary10: "#AAAAAA",
   primary100: "#505050",
-  primary200: "#242424",
-  primary300: "#323232",
+  primary200: "#323232",
+  primary300: "#242424",
   primary400: "#181818",
   onPrimary: WHITE,
   onPrimary10: "#505050",
@@ -184,7 +184,7 @@ export const DarkThemeColors = {
   onPrimary100: WHITE,
   onPrimary300: WHITE,
   onPrimary400: WHITE,
-  secondary: catastropheeColors.royalBlue,
+  secondary: palette.royalBlue,
   onSecondary: "#FFFFFF",
   background: RAGOON_GREEN,
   surface: HUNTER_GREEN,
@@ -275,8 +275,8 @@ export const InputStyle = {
     color: setAlpha(Color.onPrimary200, 0.5)
   },
   ":invalid": {
-    border: `0.092rem solid ${catastropheeColors.red}`,
-    backgroundColor: setAlpha(catastropheeColors.red, 0.3)
+    border: `0.092rem solid ${palette.red}`,
+    backgroundColor: setAlpha(palette.red, 0.3)
   }
 };
 export const Font = {

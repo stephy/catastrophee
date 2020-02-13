@@ -1,19 +1,19 @@
 import * as React from "react";
 import { css } from "glamor";
 import {
-  catastropheeColors,
+  palette,
   Color,
   Paddings,
   Family,
   defaults,
-  onCatastropheeColors,
+  onPalette,
   Margins,
-  catastropheeColorsComplementary
+  paletteComplementary
 } from "@catastrophee/styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
-const defaultColor = catastropheeColors.blue;
+const defaultColor = palette.blue;
 const defaultStyles = {
   container: {
     color: Color.light,
@@ -99,21 +99,21 @@ export const TagWithAction = ({
   return (
     <div
       {...css(defaultStyles.container, {
-        backgroundColor: catastropheeColors[currentColor],
-        color: onCatastropheeColors[currentColor],
+        backgroundColor: palette[currentColor],
+        color: onPalette[currentColor],
         gridTemplateColumns
       })}
     >
       {actions && (
         <button
           {...css(defaultStyles.btnArrow, {
-            backgroundColor: catastropheeColorsComplementary[currentColor],
-            borderColor: catastropheeColorsComplementary[currentColor]
+            backgroundColor: paletteComplementary[currentColor],
+            borderColor: paletteComplementary[currentColor]
           })}
           onClick={e => onDelete && onDelete()}
         >
           <FontAwesomeIcon
-            {...css({ color: onCatastropheeColors[currentColor] })}
+            {...css({ color: onPalette[currentColor] })}
             icon={faCaretDown}
           />
         </button>
@@ -137,13 +137,13 @@ export const TagWithAction = ({
       {showDelete && (
         <button
           {...css(defaultStyles.btnDelete, {
-            backgroundColor: catastropheeColorsComplementary[currentColor],
-            borderColor: catastropheeColorsComplementary[currentColor]
+            backgroundColor: paletteComplementary[currentColor],
+            borderColor: paletteComplementary[currentColor]
           })}
           onClick={e => onDelete && onDelete()}
         >
           <FontAwesomeIcon
-            {...css({ color: onCatastropheeColors[currentColor] })}
+            {...css({ color: onPalette[currentColor] })}
             icon={faTrash}
           />
         </button>

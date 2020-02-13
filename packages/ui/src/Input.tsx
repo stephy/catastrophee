@@ -6,7 +6,7 @@ import {
   InputStyle,
   Color,
   defaults,
-  catastropheeColors,
+  palette,
   Family,
   Font,
   setAlpha,
@@ -21,7 +21,7 @@ const defaultStyles = {
     position: "relative"
   },
   errorMessage: {
-    color: catastropheeColors.red,
+    color: palette.red,
     fontFamily: Family,
     fontSize: defaults.fontSize,
     fontStyle: "italic"
@@ -43,16 +43,16 @@ const defaultStyles = {
     top: "16px"
   },
   invalidInput: {
-    border: `0.092rem solid ${catastropheeColors.red}`,
-    backgroundColor: setAlpha(catastropheeColors.red, 0.3),
-    caretColor: catastropheeColors.red,
+    border: `0.092rem solid ${palette.red}`,
+    backgroundColor: setAlpha(palette.red, 0.3),
+    caretColor: palette.red,
     ":focus": {
-      border: `0.092rem solid ${catastropheeColors.red}`,
-      backgroundColor: setAlpha(catastropheeColors.red, 0.3)
+      border: `0.092rem solid ${palette.red}`,
+      backgroundColor: setAlpha(palette.red, 0.3)
     }
   },
   iconInvalid: {
-    color: catastropheeColors.red,
+    color: palette.red,
     fontSize: defaults.fontSize,
     position: "absolute",
     right: "-30px",

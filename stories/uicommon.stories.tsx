@@ -1,7 +1,7 @@
 import * as React from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
-import { catastropheeColors, Margins, Family, Bold } from "@catastrophee/styles";
+import { palette, Margins, Family, Bold } from "@catastrophee/styles";
 import { css } from "glamor";
 
 import {
@@ -317,7 +317,7 @@ uicommonStories
   .add("Pill", () => {
     return (
       <div>
-        {Object.keys(catastropheeColors).map(color => {
+        {Object.keys(palette).map(color => {
           return (
             <div key={color} {...css({ marginBottom: Margins.default })}>
               <Pill showBorder={false} label={color} color={color} />
@@ -332,7 +332,7 @@ uicommonStories
   .add("Pill truncated", () => {
     return (
       <div>
-        {Object.keys(catastropheeColors).map(color => {
+        {Object.keys(palette).map(color => {
           return (
             <div key={color} {...css({ marginBottom: Margins.default })}>
               <Pill
@@ -363,7 +363,7 @@ uicommonStories
   .add("Tag", () => {
     return (
       <div>
-        {Object.keys(catastropheeColors).map(color => {
+        {Object.keys(palette).map(color => {
           return (
             <div key={color} {...css({ marginBottom: Margins.default })}>
               <Tag showBorder={true} label={color} color={color} />
@@ -437,7 +437,7 @@ uicommonStories
   .add("Tag truncated", () => {
     return (
       <div>
-        {Object.keys(catastropheeColors).map(color => {
+        {Object.keys(palette).map(color => {
           return (
             <div key={color} {...css({ marginBottom: Margins.default })}>
               <Tag
@@ -483,7 +483,7 @@ uicommonStories
   .add("TagWithAction", () => {
     return (
       <div>
-        {Object.keys(catastropheeColors).map(color => {
+        {Object.keys(palette).map(color => {
           return (
             <div key={color} {...css({ marginBottom: Margins.default })}>
               <TagWithAction
@@ -514,7 +514,7 @@ uicommonStories
   .add("TagWithAction Truncated", () => {
     return (
       <div>
-        {Object.keys(catastropheeColors).map(color => {
+        {Object.keys(palette).map(color => {
           return (
             <div key={color} {...css({ marginBottom: Margins.default })}>
               <TagWithAction

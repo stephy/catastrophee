@@ -5,7 +5,7 @@ import {
   Paddings,
   Bold,
   Margins,
-  catastropheeColors,
+  palette,
   Borders,
   Family,
   Regular
@@ -45,8 +45,8 @@ export const Buttons = {
     padding: Paddings.relaxed
   },
   primary: {
-    backgroundColor: catastropheeColors.royalBlue,
-    border: `1px solid ${catastropheeColors.royalBlue}`,
+    backgroundColor: palette.royalBlue,
+    border: `1px solid ${palette.royalBlue}`,
     borderRadius: "4px",
     color: Color.onPrimary,
     fontSize: toRem(12),

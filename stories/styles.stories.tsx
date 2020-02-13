@@ -2,8 +2,8 @@ import * as React from "react";
 import { storiesOf } from "@storybook/react";
 
 import {
-  catastropheeColors,
-  catastropheeColorsComplementary,
+  palette,
+  paletteComplementary,
   Margins,
   Font,
   Color,
@@ -21,17 +21,22 @@ import {
   hintBottomLeft,
   hintBottomRight
 } from "@catastrophee/styles";
-
+import SyntaxHighlighter from "react-syntax-highlighter";
 import { css } from "glamor";
 import { Tag } from "@catastrophee/ui";
 import { catColors } from "./defaultStyles";
-const rioLogo = require("../public-assets/favicon-96.png");
+import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
+const catLogo = require("../public-assets/favicon-96.png");
 const styles = {
+  p: {
+    fontSize: "13px",
+    fontWeight: 400,
+    display: "inline-block"
+  },
   container: {
     background: catColors.background,
     padding: Paddings.default,
     display: "flex",
-    alignItems: "center",
     flexDirection: "column",
     justifyContent: "center"
   },
@@ -67,11 +72,13 @@ const styles = {
     justifyContent: "space-around"
   },
   box: {
+    fontSize: "11px",
     padding: "12px",
     display: "flex",
     flexDirection: "column",
     flexGrow: 1,
-    justifyContent: "space-between"
+    justifyContent: "space-between",
+    margin: 1
   },
   boxFooter: {
     justifyContent: "space-between",
@@ -97,8 +104,10 @@ const styles = {
     lineHeight: "0.9rem"
   },
   elevationWrapper: {
+    backgroundColor: Color.surface,
+    padding: Paddings.default,
     display: "flex",
-    width: "970px",
+    width: "900px",
     flexWrap: "wrap"
   },
   elevation: {
@@ -137,58 +146,62 @@ const renderBox = (
     </div>
   );
 };
-const rioStories = storiesOf("@catastrophee/styles", module);
-rioStories.add("README", () => {
+const catStories = storiesOf("@catastrophee/styles", module);
+catStories.add("README", () => {
+  const hintStringCode = `<span
+  {...css(hint, hintBottomRight)}
+  aria-label="Hello I am a top left tooltip"
+>
+  Text with tooltip (hintBottomRight)
+</span>`;
   return (
     <div {...css(styles.container)}>
-      <div {...css(styles.container)}>
+      <div>
         <div>
-          <img src={rioLogo} />
+          <img src={catLogo} />
         </div>
 
         <div {...css(Font.body, styles.fontColor)}>
-          <Tag showBorder label="@catastrophee/styles" color="royalBlue" />
+          <Tag
+            showBorder={true}
+            label="@catastrophee/styles"
+            color="darkGrey"
+            style={{
+              label: {
+                fontSize: "32px"
+              }
+            }}
+          />
         </div>
       </div>
-
+      <br />
+      <br />
+      <br />
       <div>
         <div {...css(Font.h1, styles.fontColor)}>
-          <h1>@catastrophee/styles</h1>
-          <p>
+          <p style={styles.p}>
             @catastrophee/styles has no dependencies and it is just a set of pre
             defined colors, styles and style helper functions.
           </p>
-          To use @catastrophee/styles you can do so by installing rio-styles
-          <Tag label="yarn add @catastrophee/styles" color="pink" /> or
-          <Tag label="npm install @catastrophee/styles" color="violet" />
-          <h1>Available colors</h1>
-          <h2>catastropheeColors</h2>
+          <br />
           <Tag
-            label="import { catastropheeColors } from '@catastrophee/styles' "
-            color="violet"
-          />
-          <p>
-            {Object.keys(catastropheeColors).map(color => {
-              return <Tag label={`.${color}`} color={color} fill />;
-            })}
-          </p>
-          <pre> Example: catastropheeColors.green </pre>
-          <h2>catastropheeColorsComplementary</h2>
+            label="yarn add @catastrophee/styles"
+            color="darkGrey"
+            showBorder={true}
+          />{" "}
+          <p style={styles.p}>or</p>
           <Tag
-            label="import { catastropheeColorsComplementary } from '@catastrophee/styles' "
-            color="violet"
+            label="npm install @catastrophee/styles"
+            color="darkGrey"
+            showBorder={true}
           />
-          <p>
-            {Object.keys(catastropheeColorsComplementary).map(color => {
-              return <Tag label={`.${color}`} color={color} fill />;
-            })}
-          </p>
-          <pre> Example: catastropheeColorsComplementary.pink </pre>
           <h2>Colors</h2>
           <Tag
             label="import { Color } from '@catastrophee/styles' "
-            color="violet"
+            color="darkGrey"
+            showBorder={true}
           />
+          <br /> <br />
           <p {...css(styles.label)}>
             Primary and secondary colors are applied sparingly to strategic
             parts of your UI. They are typically chosen for their ability to
@@ -198,6 +211,7 @@ rioStories.add("README", () => {
             color variants can also be used to complement and provide accessible
             options for your primary and secondary colors.
           </p>
+          <br />
           <div {...css(styles.boxContainer, { height: "200px" })}>
             {renderBox("Primary", Color.primary, Color.onPrimary, "500")}
             {renderBox(
@@ -227,7 +241,8 @@ rioStories.add("README", () => {
             {renderBox("Primary 10", Color.primary10, Color.onPrimary10, "10")}
             {renderBox("Secondary", Color.secondary, Color.onSecondary, "S")}
           </div>
-          <pre> Example: Color.primary </pre>
+          <br />
+          <br />
           <div {...css(styles.boxContainer, { height: "110px" })}>
             {renderBox(
               "Background",
@@ -251,8 +266,15 @@ rioStories.add("README", () => {
               "Error color indicates errors in components, such as text fields"
             )}
           </div>
-          <pre> Example: Color.error </pre>
+          <br />
+          <br />
+          <br />
           <h2>On Colors</h2>
+          <Tag
+            label="import { Color } from '@catastrophee/styles' "
+            color="darkGrey"
+            showBorder={true}
+          />
           <p {...css(styles.label)}>
             “On” colors The elements in an app use colors from specific
             categories in your color palette, such as a primary color. Whenever
@@ -268,6 +290,7 @@ rioStories.add("README", () => {
             iconography, and strokes. Sometimes, they are also applied to
             surfaces.
           </p>
+          <br /> <br />
           <div {...css(styles.boxContainer, { height: "80px" })}>
             {renderBox("On Primary", Color.onPrimary, Color.primary, "500")}
             {renderBox(
@@ -300,6 +323,7 @@ rioStories.add("README", () => {
             {renderBox("on Surface", Color.onSurface, Color.surface, "13")}
             {renderBox("on Error", Color.onError, "#000000", "14")}
           </div>
+          <br /> <br /> <br />
           <h2>Other Complementary Colors</h2>
           <div {...css(styles.boxContainer, { height: "80px" })}>
             {renderBox("In Progress", Color.inProgress, "#FFFFFF", "15")}
@@ -307,117 +331,99 @@ rioStories.add("README", () => {
             {renderBox("Decoration", Color.decoration, "#FFFFFF", "17")}
             {renderBox("Success", Color.success, "#FFFFFF", "18")}
           </div>
+          <br /> <br /> <br />
+          <h2>Palette</h2>
+          <Tag
+            label="import { palette } from '@catastrophee/styles' "
+            color="darkGrey"
+            showBorder={true}
+          />
+          <p {...css({ width: "760px" })}>
+            {Object.keys(palette).map(color => {
+              return (
+                <Tag
+                  label={`palette.${color}`}
+                  color={color}
+                  fill
+                  style={{
+                    container: {
+                      height: "80px",
+                      width: "160px",
+                      alignItems: "flex-end"
+                    },
+                    label: { fontSize: "10px" }
+                  }}
+                />
+              );
+            })}
+          </p>
+          <br /> <br /> <br />
+          <h2>Palette Complementary</h2>
+          <Tag
+            label="import { paletteComplementary } from '@catastrophee/styles' "
+            color="darkGrey"
+            showBorder={true}
+          />
+          <p {...css({ width: "760px" })}>
+            {Object.keys(paletteComplementary).map(color => {
+              return (
+                <Tag
+                  label={`paletteComplementary.${color}`}
+                  color={color}
+                  fill
+                  style={{
+                    container: {
+                      height: "80px",
+                      width: "160px",
+                      alignItems: "flex-end"
+                    },
+                    label: { fontSize: "10px" }
+                  }}
+                />
+              );
+            })}
+          </p>
+          <br /> <br /> <br />
           <h1>Typography</h1>
           <Tag
             label="import { Font } from '@catastrophee/styles' "
-            color="violet"
+            color="darkGrey"
+            showBorder={true}
           />
           <div>
-            <div {...css(Font.h6)}>
-              Family: "Circular EP", -apple-system, "Helvetica Neue", "Lucida
-              Grande", sans-serif'
-            </div>
-            <div {...css(Font.h1)}>h1</div>
-            <div {...css(Font.h2)}>h2</div>
-            <div {...css(Font.h3)}>h3</div>
-            <div {...css(Font.h4)}>h4</div>
-            <div {...css(Font.h5)}>h5</div>
-            <div {...css(Font.h6)}>h6</div>
-            <div {...css(Font.subtitle)}>Subtitle</div>
-            <div {...css(Font.body)}>body</div>
-            <div {...css(Font.button)}>button</div>
-            <div {...css(Font.caption)}>caption</div>
-            <div {...css(Font.overline)}>overline</div>
-            <div {...css(Font.overlineBold)}>overlineBold</div>
-            <pre> Example: Font.overlineBold </pre>
+            {Object.keys(Font).map(key => {
+              return (
+                <div key={key} {...css(Font[key], { margin: "10px" })}>
+                  Font.{key}
+                </div>
+              );
+            })}
           </div>
+          <br />
+          <br />
+          <br />
           <h1>Elevation</h1>
           <Tag
             label="import { Elevation } from '@catastrophee/styles' "
-            color="violet"
+            color="darkGrey"
+            showBorder={true}
           />
-          <pre> Example: Elevation.depth2 </pre>
+          <br />
+          <br />
           <div {...css(styles.elevationWrapper)}>
-            <div {...css(styles.elevation, Font.overline, Elevation.depth0)}>
-              Depth0
-            </div>
-            <div {...css(styles.elevation, Font.overline, Elevation.depth1)}>
-              Depth1
-            </div>
-            <div {...css(styles.elevation, Font.overline, Elevation.depth2)}>
-              Depth2
-            </div>
-            <div {...css(styles.elevation, Font.overline, Elevation.depth3)}>
-              Depth3
-            </div>
-            <div {...css(styles.elevation, Font.overline, Elevation.depth4)}>
-              Depth4
-            </div>
-            <div {...css(styles.elevation, Font.overline, Elevation.depth5)}>
-              Depth5
-            </div>
-            <div {...css(styles.elevation, Font.overline, Elevation.depth6)}>
-              Depth6
-            </div>
-            <div {...css(styles.elevation, Font.overline, Elevation.depth7)}>
-              Depth7
-            </div>
-            <div {...css(styles.elevation, Font.overline, Elevation.depth8)}>
-              Depth8
-            </div>
-            <div {...css(styles.elevation, Font.overline, Elevation.depth9)}>
-              Depth9
-            </div>
-            <div {...css(styles.elevation, Font.overline, Elevation.depth10)}>
-              Depth10
-            </div>
-            <div {...css(styles.elevation, Font.overline, Elevation.depth11)}>
-              depth11
-            </div>
-            <div {...css(styles.elevation, Font.overline, Elevation.depth12)}>
-              Depth12
-            </div>
-            <div {...css(styles.elevation, Font.overline, Elevation.depth13)}>
-              Depth13
-            </div>
-            <div {...css(styles.elevation, Font.overline, Elevation.depth14)}>
-              Depth14
-            </div>
-            <div {...css(styles.elevation, Font.overline, Elevation.depth15)}>
-              Depth15
-            </div>
-            <div {...css(styles.elevation, Font.overline, Elevation.depth16)}>
-              Depth16
-            </div>
-            <div {...css(styles.elevation, Font.overline, Elevation.depth17)}>
-              Depth17
-            </div>
-            <div {...css(styles.elevation, Font.overline, Elevation.depth18)}>
-              Depth18
-            </div>
-            <div {...css(styles.elevation, Font.overline, Elevation.depth19)}>
-              Depth19
-            </div>
-            <div {...css(styles.elevation, Font.overline, Elevation.depth20)}>
-              Depth20
-            </div>
-            <div {...css(styles.elevation, Font.overline, Elevation.depth21)}>
-              depth21
-            </div>
-            <div {...css(styles.elevation, Font.overline, Elevation.depth22)}>
-              Depth22
-            </div>
-            <div {...css(styles.elevation, Font.overline, Elevation.depth23)}>
-              Depth23
-            </div>
-            <div {...css(styles.elevation, Font.overline, Elevation.depth24)}>
-              Depth24
-            </div>
+            {Object.keys(Elevation).map(key => {
+              return (
+                <div {...css(styles.elevation, Font.overline, Elevation[key])}>
+                  elevation.{key}
+                </div>
+              );
+            })}
           </div>
           <h1>Helper functions</h1>
           <Tag
             label="import { toRem, setAlpha } from '@catastrophee/styles' "
-            color="violet"
+            color="darkGrey"
+            showBorder={true}
           />
           <pre> Example: toRem(20) </pre>
           <pre> Example: setAlpha(Color.background, 0.5) </pre>
@@ -425,58 +431,69 @@ rioStories.add("README", () => {
 
         <div {...css(Font.h1, styles.fontColor)}>
           <h1>Predefined styles for Tooltip on hover</h1>
-          <span
-            {...css(styles.label, hint, hintTop)}
-            aria-label="Hello I am a top tooltip"
-          >
-            Text with tooltip (hintTop)
-          </span>
-          <span
-            {...css(styles.label, hint, hintBottom)}
-            aria-label="Hello I am a bottom tooltip"
-          >
-            Text with tooltip (hintBottom)
-          </span>
-          <span
-            {...css(styles.label, hint, hintLeft)}
-            aria-label="Hello I am a left tooltip"
-          >
-            Text with tooltip (hintLeft)
-          </span>
-          <span
-            {...css(styles.label, hint, hintRight)}
-            aria-label="Hello I am a right tooltip"
-          >
-            Text with tooltip (hintRight)
-          </span>
+          <div {...css({ width: "500px" })}>
+            <span
+              {...css(styles.label, hint, hintTop)}
+              aria-label="Hello I am a top tooltip"
+            >
+              Text with tooltip, hover over me! (hintTop)
+            </span>
+            <span
+              {...css(styles.label, hint, hintBottom)}
+              aria-label="Hello I am a bottom tooltip"
+            >
+              Text with tooltip, hover over me!(hintBottom)
+            </span>
+            <span
+              {...css(styles.label, hint, hintLeft)}
+              aria-label="Hello I am a left tooltip"
+            >
+              Text with tooltip, hover over me! (hintLeft)
+            </span>
+            <span
+              {...css(styles.label, hint, hintRight)}
+              aria-label="Hello I am a right tooltip"
+            >
+              Text with tooltip, hover over me! (hintRight)
+            </span>
 
-          <span
-            {...css(styles.label, hint, hintTopLeft)}
-            aria-label="Hello I am a top left tooltip"
-          >
-            Text with tooltip (hintTopLeft)
-          </span>
+            <span
+              {...css(styles.label, hint, hintTopLeft)}
+              aria-label="Hello I am a top left tooltip"
+            >
+              Text with tooltip, hover over me! (hintTopLeft)
+            </span>
 
-          <span
-            {...css(styles.label, hint, hintTopRight)}
-            aria-label="Hello I am a top left tooltip"
-          >
-            Text with tooltip (hintTopRight)
-          </span>
+            <span
+              {...css(styles.label, hint, hintTopRight)}
+              aria-label="Hello I am a top left tooltip"
+            >
+              Text with tooltip, hover over me! (hintTopRight)
+            </span>
 
-          <span
-            {...css(styles.label, hint, hintBottomLeft)}
-            aria-label="Hello I am a top left tooltip"
-          >
-            Text with tooltip (hintBottomLeft)
-          </span>
+            <span
+              {...css(styles.label, hint, hintBottomLeft)}
+              aria-label="Hello I am a top left tooltip"
+            >
+              Text with tooltip,hover over me! (hintBottomLeft)
+            </span>
 
-          <span
-            {...css(styles.label, hint, hintBottomRight)}
-            aria-label="Hello I am a top left tooltip"
+            <span
+              {...css(styles.label, hint, hintBottomRight)}
+              aria-label="Hello I am a top left tooltip"
+            >
+              Text with tooltip (hintBottomRight)
+            </span>
+          </div>
+        </div>
+        <div>
+          <SyntaxHighlighter
+            language="javascript"
+            style={docco}
+            customStyle={{ color: "white" }}
           >
-            Text with tooltip (hintBottomRight)
-          </span>
+            {hintStringCode}
+          </SyntaxHighlighter>
         </div>
       </div>
     </div>

@@ -58,7 +58,7 @@ stories.add("Welcome to Catastrophee", () => {
                     <span>
                       <a
                         {...css(styles.link)}
-                        href="?path=/story/@catastrophee/styles--readme"
+                        href="?path=/story/catastrophee-styles--readme"
                       >
                         @catastrophee/styles
                       </a>{" "}
@@ -84,7 +84,7 @@ stories.add("Welcome to Catastrophee", () => {
                     <span>
                       <a
                         {...css(styles.link)}
-                        href="?path=/story/@catastrophee/ui--readme"
+                        href="?path=/story/catastrophee-ui--readme"
                       >
                         @catastrophee/ui
                       </a>{" "}
@@ -110,7 +110,7 @@ stories.add("Welcome to Catastrophee", () => {
                     <span>
                       <a
                         {...css(styles.link)}
-                        href="?path=/story/@catastrophee/models--readme"
+                        href="?path=/story/catastrophee-models--readme"
                       >
                         @catastrophee/models
                       </a>{" "}
@@ -178,8 +178,8 @@ stories.add("Welcome to Catastrophee", () => {
               Catastrophee is a Lerna repo. Lerna is just a tool for managing
               JavaScript projects with multiple packages. Lerna can be a bit
               cumbersome to use in the beginning. But you won't need to know
-              much about it to be able to use Rio. However, if you want to learn
-              more about Lerna,{" "}
+              much about it to be able to use Catastrophee. However, if you want
+              to learn more about Lerna,{" "}
               <a
                 {...css(defaultStyles.link)}
                 href="https://github.com/lerna/lerna"

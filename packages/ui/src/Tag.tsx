@@ -2,17 +2,17 @@ import * as React from "react";
 import { css } from "glamor";
 import { merge } from "lodash";
 import {
-  catastropheeColors,
+  palette,
   Color,
   Paddings,
   Family,
   defaults,
-  onCatastropheeColors,
+  onPalette,
   Margins,
   CssPropertyTypes
 } from "@catastrophee/styles";
 
-const defaultColor = catastropheeColors.blue;
+const defaultColor = palette.blue;
 const defaultStyles = {
   container: {
     borderRadius: "4px",
@@ -57,15 +57,15 @@ export const Tag = ({
         styles.container,
         fill
           ? {
-              backgroundColor: catastropheeColors[currentColor],
-              color: onCatastropheeColors[currentColor]
+              backgroundColor: palette[currentColor],
+              color: onPalette[currentColor]
             }
           : {
-              border: `0.092rem solid ${catastropheeColors[currentColor]}`
+              border: `0.092rem solid ${palette[currentColor]}`
             },
         showBorder
           ? {
-              borderLeft: `0.4rem solid ${catastropheeColors[currentColor]}`
+              borderLeft: `0.4rem solid ${palette[currentColor]}`
             }
           : {}
       )}

@@ -4,8 +4,8 @@ import { css, keyframes } from "glamor";
 import * as React from "react";
 import {
   Margins,
-  catastropheeColors,
-  onCatastropheeColors,
+  palette,
+  onPalette,
   Family,
   defaults,
   Paddings
@@ -86,24 +86,24 @@ export const Notification: React.SFC<NotificationType> = ({
   let iconStyle = {};
   switch (status) {
     case PROMISE_FULFILLED: {
-      backgroundColor = catastropheeColors.green;
-      color = onCatastropheeColors.green;
+      backgroundColor = palette.green;
+      color = onPalette.green;
       icon = faCheck;
       show = true;
       break;
     }
     case PROMISE_REJECTED: {
       icon = faTimes;
-      backgroundColor = catastropheeColors.red;
-      color = onCatastropheeColors.red;
+      backgroundColor = palette.red;
+      color = onPalette.red;
       show = true;
       break;
     }
     case PROMISE_PENDING: {
       icon = faSpinner;
       iconStyle = styles.pendingIcon;
-      backgroundColor = catastropheeColors.darkGrey;
-      color = onCatastropheeColors.darkGrey;
+      backgroundColor = palette.darkGrey;
+      color = onPalette.darkGrey;
       show = true;
       break;
     }

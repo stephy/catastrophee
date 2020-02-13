@@ -10,7 +10,7 @@
   "scripts": {
     "start": "yarn run storybook",
     "storybook": "start-storybook -p 9001 -c .storybook",
-    "bundle": "webpack --config config/webpack.config.dist.js --output-library=rio",
+    "bundle": "webpack --config config/webpack.config.dist.js --output-library=catastrophee",
     "build": "lerna run build",
     "build-storybook": "build-storybook -s ./public",
     "build:ci": "lerna exec --scope=catastropheewebsite yarn build",
@@ -50,6 +50,7 @@
     "moment": "^2.24.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-syntax-highlighter": "^12.2.1",
     "storybook-readme": "^5.0.5",
     "uuidv4": "^4.0.0"
   },
