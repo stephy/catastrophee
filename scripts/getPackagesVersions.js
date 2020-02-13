@@ -1,22 +1,19 @@
 const axios = require("axios");
-const RIO_PACKAGES_LIST = [
-  "catastropheemedia",
+const CAT_PACKAGES_LIST = [
   "@catastrophee/styles",
   "@catastrophee/ui",
-  "catastropheetypeahead",
-  "@catastrophee/models",
-  "catastropheepdf"
+  "@catastrophee/models"
 ];
 
-const getRioPackageVersions = async () => {
+const getCatPackageVersions = async () => {
   const promise = axios({
-    url: "https://artifacts.netflix.com/ui/v1/native/versions/npm",
+    url: "https://www.npmjs.com/package/catastrophee",
     method: "post",
     data: [
       {
         id: "npmName",
         comparator: "equals",
-        values: RIO_PACKAGES_LIST
+        values: CAT_PACKAGES_LIST
       }
     ]
   });
@@ -38,6 +35,6 @@ const getRioPackageVersions = async () => {
 };
 
 module.exports = {
-  packages: RIO_PACKAGES_LIST,
-  getRioPackageVersions
+  packages: CAT_PACKAGES_LIST,
+  getCatPackageVersions
 };

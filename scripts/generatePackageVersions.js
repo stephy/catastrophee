@@ -1,8 +1,8 @@
-const getRioPackageVersions = require("./getPackagesVersions")
-  .getRioPackageVersions;
+const getCatPackageVersions = require("./getPackagesVersions")
+  .getCatPackageVersions;
 const fs = require("fs");
 
-const versions = getRioPackageVersions();
+const versions = getCatPackageVersions();
 versions.then(results => {
   // write to a new file named 2pac.txt
   const latestVersions = {};

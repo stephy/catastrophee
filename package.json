@@ -1,6 +1,6 @@
 {
   "name": "catastrophee",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "Reusable components, models and utils for react and mobx apps",
   "main": "dist/lib/index.js",
   "publishConfig": {
@@ -22,7 +22,8 @@
     "rebuild": "lerna run tsc",
     "publishStoryBook": "git add storybook-static/ && git commit -m 'Update catastrophee docs' && git push origin mater && git add . && git stash",
     "publishPage": "yarn run build-storybook && yarn run publishStoryBook",
-    "publish": "lerna publish && node ./scripts/generatePackageVersions.js && git add . && git commit -m 'Update package version' && git push origin master && yarn run publishPage"
+    "publish": "lerna publish",
+    "genPackage": "node ./scripts/generatePackageVersions.js"
   },
   "engines": {
     "node": ">=10.13.0 <11.0.0"
@@ -70,7 +71,7 @@
     "babel-cli": "^6.26.0",
     "babel-loader": "^8.0.5",
     "jest": "^24.7.1",
-    "lerna": "^3.19.0",
+    "lerna": "^3.20.2",
     "react-docgen-typescript-loader": "^3.1.0",
     "react-docgen-typescript-webpack-plugin": "^1.1.0",
     "react-scripts": "^2.1.8",
