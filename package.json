@@ -1,6 +1,6 @@
 {
   "name": "catastrophee",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Reusable components, models and utils for react and mobx apps",
   "main": "dist/lib/index.js",
   "publishConfig": {
