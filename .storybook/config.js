@@ -6,6 +6,8 @@ import { themes } from "@storybook/theming";
 import { withInfo } from "@storybook/addon-info";
 import { addReadme } from "storybook-readme";
 
+addDecorator(withInfo);
+
 const theme = Object.assign({}, themes.dark, {
   appContentBg: "#0F0F0F"
 });
