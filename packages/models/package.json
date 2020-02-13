@@ -1,6 +1,6 @@
 {
   "name": "@catastrophee/models",
-  "version": "0.0.3",
+  "version": "0.0.1",
   "description": "Mobx models for the web",
   "author": "Stephani Moroni Bishop <stephmbishop@yahoo.com>",
   "homepage": "http://castastrophee.com",
@@ -12,7 +12,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/stephy/catastrophee.git"
+    "url": "https://github.com/stephy/catastrophee.git",
+    "directory": "packages/models"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",

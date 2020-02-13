@@ -1,11 +1,11 @@
 {
   "name": "@catastrophee/ui",
-  "version": "0.0.3",
+  "version": "0.0.1",
   "description": "Common UI Components",
   "author": "Stephani Moroni Bishop <stephmbishop@yahoo.com>",
   "homepage": "http://castastrophee.com",
   "license": "ISC",
-  "main": "dist/uicommon/src/index.js",
+  "main": "dist/ui/src/index.js",
   "dependencies": {
     "@catastrophee/models": "^0.0.3",
     "@catastrophee/styles": "^0.0.3",
@@ -30,7 +30,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/stephy/catastrophee.git"
+    "url": "https://github.com/stephy/catastrophee.git",
+    "directory": "packages/ui"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
