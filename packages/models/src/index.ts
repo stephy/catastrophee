@@ -12,3 +12,5 @@ export * from "./PopupStore";
 export * from "./Scrolltracker";
 export * from "./Toast";
 export * from "./utils";
+export * from "./comment/Comment";
+export * from "./comment/CommentStore";

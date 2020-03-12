@@ -11,7 +11,8 @@ import {
   networkStatus,
   offlineStorage,
   NetworkStatusOptions,
-  IndexedDb
+  IndexedDb,
+  CommentsStore
 } from "@catastrophee/models";
 import { observer } from "mobx-react";
 import { catColors } from "./defaultStyles";
@@ -46,12 +47,6 @@ const styles = {
 
 const stories = storiesOf("@catastrophee/models", module);
 stories
-  // .addParameters({
-  //   readme: {
-  //     codeTheme: "atom-dark",
-  //     content: modelsReadme
-  //   }
-  // })
   .add("Getting Started", () => {
     return (
       <div {...css(styles.container)}>
@@ -66,45 +61,81 @@ stories
       </div>
     );
   })
-  .add(
-    "NetworkStatus",
-    () => {
-      @observer
-      class NetworkStatusClass extends React.Component {
-        render() {
-          const status = networkStatus.status;
-          const isOnline = networkStatus.status === NetworkStatusOptions.online;
-          return (
-            <div {...css(Font.body, { color: Color.onBackground })}>
-              <span>
-                Network status:{" "}
-                <span
-                  {...css({
-                    fontWeight: Bold,
-                    color: isOnline ? Color.success : Color.error
-                  })}
-                >
-                  {status}
-                </span>
+  .add("NetworkStatus", () => {
+    @observer
+    class NetworkStatusClass extends React.Component {
+      render() {
+        const status = networkStatus.status;
+        const isOnline = networkStatus.status === NetworkStatusOptions.online;
+        return (
+          <div {...css(Font.body, { color: Color.onBackground })}>
+            <span>
+              Network status:{" "}
+              <span
+                {...css({
+                  fontWeight: Bold,
+                  color: isOnline ? Color.success : Color.error
+                })}
+              >
+                {status}
               </span>
-              <div>
-                To see your network status change, turn off your wifi or unplug
-                your ethernet cable
-              </div>
+            </span>
+            <div>
+              To see your network status change, turn off your wifi or unplug
+              your ethernet cable
             </div>
-          );
-        }
+          </div>
+        );
       }
-      return <NetworkStatusClass />;
     }
-    // {
-    //   readme: {
-    //     // override docs
-    //     content: "",
-    //     sidebar: networkStatusReadme
-    //   }
-    // }
-  )
+    return <NetworkStatusClass />;
+  })
+  .add("Comments", () => {
+    const onFetchComments = () => {
+      return new Promise((resolve, reject) => {
+        resolve({});
+      });
+    };
+    const onSaveComment = comment => {
+      return new Promise((resolve, reject) => {
+        resolve({});
+      });
+    };
+    const commentsStore = new CommentsStore(
+      "1223",
+      onFetchComments,
+      onSaveComment
+    );
+
+    const Comments = observer(() => {
+      return (
+        <div>
+          <div>
+            {commentsStore.list.map(comment => {
+              return <div>{comment.messageText}</div>;
+            })}
+          </div>
+          <div>
+            <input
+              value={commentsStore.activeComment.messageText}
+              onChange={e => {
+                commentsStore.activeComment.set("messageText", e.target.value);
+              }}
+            />
+            <button
+              onClick={() => {
+                commentsStore.saveActiveComment(true);
+              }}
+            >
+              Save
+            </button>
+          </div>
+        </div>
+      );
+    });
+
+    return <Comments />;
+  })
   .add(
     "OfflineStorage",
     () => {
