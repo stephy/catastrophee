@@ -4,11 +4,6 @@ Cloning the repo
 
 Running examples
 
-Make sure you:
-
-- are using **node version >=8.0.0 <11.0.0**
-- have yarn installed
-
 Then run
 
 ```
