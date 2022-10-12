@@ -39,7 +39,7 @@
     "dompurify": "^1.0.10",
     "glamor": "^2.20.40",
     "js-cookie": "^2.2.0",
-    "jspdf": "1.5.3",
+    "jspdf": "2.5.1",
     "lodash": "^4.17.11",
     "mobx": "^5.9.4",
     "mobx-react": "^5.4.3",
